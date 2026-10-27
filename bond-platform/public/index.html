@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1830">
+  <meta name="description" content="Demo-only bond and sukuk portfolio dashboard.">
+  <title>Bond & Sukuk | Demo Investor Console</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">B</span><span>Bond<span class="brand-light">wise</span><small>INVESTOR CONSOLE</small></span></div>
+      <nav aria-label="Main navigation">
+        <a class="nav-item active" href="#overview">▦ <span>Overview</span></a>
+        <a class="nav-item" href="#offerings">◈ <span>Offerings</span></a>
+        <a class="nav-item" href="#portfolio">▤ <span>My portfolio</span></a>
+        <a class="nav-item" href="#activity">↗ <span>Activity</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="pulse"></span> Demo environment <small>No live funds connected</small></div>
+      <div class="side-footer">Built for exploration<br><span>v0.1.0 · MOCK MODE</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div class="mobile-brand">Bondwise <span>DEMO</span></div><div class="top-right"><span class="mode-pill">● DEMO MODE</span><button class="avatar" aria-label="Demo profile">D</button></div></header>
+      <section class="welcome" id="overview">
+        <div><p class="eyebrow">INVESTOR OVERVIEW</p><h1>Build your <em>future.</em></h1><p class="muted">Explore illustrative bond and sukuk opportunities in a virtual portfolio.</p></div>
+        <div class="date-chip">MYR <span>Malaysian Ringgit</span></div>
+      </section>
+      <div class="notice"><span class="notice-icon">!</span><div><strong>Simulation only — no real investment</strong><p>Offerings, rates and balances are illustrative. No funds are collected, securities issued, or returns guaranteed.</p></div></div>
+
+      <section class="stats-grid" id="portfolio">
+        <article class="stat-card featured"><div class="stat-top"><span>Virtual balance</span><span class="stat-icon">◎</span></div><div class="stat-value" id="balance">RM 100,000.00</div><div class="stat-foot"><span class="dot-green"></span> Demo funds only</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Simulated subscriptions</span><span class="stat-icon">↗</span></div><div class="stat-value" id="subscribed">RM 0.00</div><div class="stat-foot">In this browser session</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Available offerings</span><span class="stat-icon">◈</span></div><div class="stat-value" id="offering-count">3</div><div class="stat-foot">Illustrative products</div></article>
+      </section>
+
+      <section class="section-head" id="offerings"><div><p class="eyebrow">CURATED FOR YOU</p><h2>Bond & sukuk offerings</h2><p class="muted">Compare sample terms and explore the demo flow.</p></div><span class="section-tag">3 SAMPLE PRODUCTS</span></section>
+      <section class="offerings-grid" id="offerings-list"><div class="loading">Loading demo offerings…</div></section>
+
+      <section class="section-head activity-head" id="activity"><div><p class="eyebrow">YOUR LATEST MOVES</p><h2>Recent activity</h2><p class="muted">Simulated actions only; no money moves.</p></div></section>
+      <section class="activity-card"><div class="table-wrap"><table><thead><tr><th>ACTIVITY</th><th>DATE</th><th>AMOUNT</th><th>STATUS</th></tr></thead><tbody id="activity-list"><tr><td colspan="4" class="empty">No demo activity yet. Try a sample offering above.</td></tr></tbody></table></div></section>
+      <footer><span>Bondwise Demo</span><span>Not an offer to invest · No live issuance or payments</span></footer>
+    </main>
+  </div>
+  <dialog id="subscribe-dialog"><form method="dialog" id="subscribe-form"><button class="close" value="cancel" aria-label="Close">×</button><p class="eyebrow">VIRTUAL TRANSACTION</p><h2 id="dialog-title">Try a demo subscription</h2><p class="muted" id="dialog-description"></p><label for="amount">Simulated amount (MYR)</label><input id="amount" name="amount" type="number" min="1000" max="1000000" step="0.01" value="1000" required><p class="dialog-warning">This only creates a temporary demo record. It does not reserve, purchase, or issue any security.</p><div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" id="confirm-subscription" value="default">Run simulation</button></div><p id="dialog-error" role="alert" class="error"></p></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
