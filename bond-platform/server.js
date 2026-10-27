@@ -32,7 +32,8 @@ const subscriptions = [];
 
 app.get('/api/health', (_req, res) => res.json({
   status: 'ok',
-  mode: 'demo',
+  mode: 'live-preparation',
+  liveOperationsEnabled: false,
   liveIssuanceEnabled: false,
   livePaymentsEnabled: false,
   providerAccessVerified: false,
