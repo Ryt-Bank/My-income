@@ -23,7 +23,7 @@ function renderOfferings() {
       <div class="rate-row"><div><div class="rate">${Number(item.indicativeRate).toFixed(2)}<small>% p.a.*</small></div><div class="rate-label">Indicative sample rate</div></div><div class="term">${item.tenorMonths} months<small>Illustrative tenor</small></div></div>
       <div class="progress-info"><span>Sample allocation</span><strong>${pct.toFixed(0)}%</strong></div><div class="progress"><span style="width:${pct}%"></span></div>
       <div class="target-info">${money(item.subscribed)} of ${money(item.target)} sample target</div>
-      <button class="button primary" data-offering="${escapeHtml(item.id)}">Explore demo</button>
+      <button class="button primary" data-offering="${escapeHtml(item.id)}">Preview terms</button>
     </article>`;
   }).join('');
   document.querySelectorAll('[data-offering]').forEach((button) => button.addEventListener('click', () => openDialog(button.dataset.offering)));
@@ -37,7 +37,7 @@ function openDialog(id) {
   selectedOffering = offerings.find((item) => item.id === id);
   if (!selectedOffering) return;
   byId('dialog-title').textContent = selectedOffering.name;
-  byId('dialog-description').textContent = `Minimum simulated amount: ${money(selectedOffering.minimum)}. Sample rate: ${Number(selectedOffering.indicativeRate).toFixed(2)}% p.a. This is not a real product.`;
+  byId('dialog-description').textContent = `Minimum virtual amount: ${money(selectedOffering.minimum)}. Sample rate: ${Number(selectedOffering.indicativeRate).toFixed(2)}% p.a. This is not a real product or offer.`;
   byId('amount').min = selectedOffering.minimum;
   byId('amount').value = selectedOffering.minimum;
   byId('dialog-error').textContent = '';
@@ -50,7 +50,7 @@ byId('subscribe-form').addEventListener('submit', async (event) => {
   if (!selectedOffering) return;
   const button = byId('confirm-subscription');
   button.disabled = true;
-  button.textContent = 'Simulating…';
+  button.textContent = 'Preparing…';
   byId('dialog-error').textContent = '';
   try {
     const result = await api('/api/demo-subscriptions', {
@@ -64,7 +64,7 @@ byId('subscribe-form').addEventListener('submit', async (event) => {
     byId('dialog-error').textContent = error.message;
   } finally {
     button.disabled = false;
-    button.textContent = 'Run simulation';
+    button.textContent = 'Preview simulation';
   }
 });
 
@@ -73,7 +73,7 @@ async function refreshPortfolio() {
   byId('balance').textContent = money(portfolio.virtualBalance);
   byId('subscribed').textContent = money(portfolio.subscribedValue);
   const items = activityPayload.data;
-  byId('activity-list').innerHTML = items.length ? items.slice(0, 8).map((item) => `<tr><td><strong>${escapeHtml(item.description)}</strong><br><span style="color:#93a0b2">${escapeHtml(item.id)}</span></td><td>${new Date(item.createdAt).toLocaleString()}</td><td>${money(item.amount)}</td><td><span class="status">SIMULATED</span></td></tr>`).join('') : '<tr><td colspan="4" class="empty">No demo activity yet. Try a sample offering above.</td></tr>';
+  byId('activity-list').innerHTML = items.length ? items.slice(0, 8).map((item) => `<tr><td><strong>${escapeHtml(item.description)}</strong><br><span style="color:#93a0b2">${escapeHtml(item.id)}</span></td><td>${new Date(item.createdAt).toLocaleString()}</td><td>${money(item.amount)}</td><td><span class="status">SIMULATED</span></td></tr>`).join('') : '<tr><td colspan="4" class="empty">No simulated activity yet. Explore an illustrative offering above.</td></tr>';
 }
 
 function showToast(message) {
