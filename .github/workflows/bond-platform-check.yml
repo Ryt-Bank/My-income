@@ -1,0 +1,26 @@
+name: Bond platform demo checks
+
+on:
+  push:
+    branches: [feature/bond-sukuk-demo]
+    paths:
+      - "bond-platform/**"
+      - ".github/workflows/bond-platform-check.yml"
+  pull_request:
+    paths:
+      - "bond-platform/**"
+      - ".github/workflows/bond-platform-check.yml"
+
+jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bond-platform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run check
