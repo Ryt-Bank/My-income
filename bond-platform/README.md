@@ -1,8 +1,8 @@
-# Bond & Sukuk Demo Platform
+# Bond & Sukuk Platform — Live Mode Preparation
 
-A standalone, responsive web/mobile-friendly demo added alongside the existing Plaid Income Sample. This is a prototype for product exploration, not a securities platform.
+A standalone responsive web/mobile-friendly investor experience in live-readiness preparation, added alongside the existing Plaid Income Sample. This is not a live securities platform.
 
-## Included
+## Current mode: Live Mode preparation (not live operations)\n\nThe interface is labelled for live readiness, but it remains a mock-only prototype. Real issuance, investor funds, payments and transfers are not enabled.\n\n## Included
 - Responsive investor dashboard with illustrative bond/sukuk offerings.
 - Portfolio and activity views backed by mock in-memory data.
 - Simulated subscription flow that never moves money or creates a real investment.
@@ -26,7 +26,7 @@ Open http://localhost:8080. API health: http://localhost:8080/api/health.
 - `LIVE_PAYMENTS_ENABLED=false`
 - `PAYMENTS_MODE=mock`
 - `PROVIDER_ACCESS_VERIFIED=false`
-- Demo subscription activity is held in server memory and disappears when the process restarts.
+- Simulated subscription activity is held in server memory and disappears when the process restarts.
 - No investor identity verification, custody, settlement, payment processing, token minting, or real issuance is implemented.
 - Example yields, amounts, and offerings are illustrative only and are not offers, investment advice, or guaranteed returns.
 - A target of RM30 billion is a planning placeholder, not evidence of funding, issuance capacity, approvals, or investor commitments.
@@ -34,4 +34,4 @@ Open http://localhost:8080. API health: http://localhost:8080/api/health.
 Before any real launch, obtain applicable Malaysian regulatory/legal approvals and provider access, implement audited security and persistent data storage, and engage appropriately licensed parties. Do not enable live operations merely by changing environment variables without an independently reviewed integration and approval process.
 
 ## Deployment
-This folder can be deployed as a Node web service on a Node-compatible host. Set the start command to `npm start`. Keep all live flags disabled. No deployment has been performed by this commit.
+This folder can be deployed as a Node web service on a Node-compatible host. Set the start command to `npm start`. Keep all live flags disabled. No deployment has been performed by this commit. The UI label indicates preparation only; it does not indicate production readiness or regulatory approval.
