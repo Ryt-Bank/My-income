@@ -2,7 +2,11 @@
 
 A standalone responsive web/mobile-friendly investor experience in live-readiness preparation, added alongside the existing Plaid Income Sample. This is not a live securities platform.
 
-## Current mode: Live Mode preparation (not live operations)\n\nThe interface is labelled for live readiness, but it remains a mock-only prototype. Real issuance, investor funds, payments and transfers are not enabled.\n\n## Included
+## Current mode: Live Mode preparation (not live operations)
+
+The interface is labelled for live readiness, but it remains a mock-only prototype. Real issuance, investor funds, payments and transfers are not enabled.
+
+## Included
 - Responsive investor dashboard with illustrative bond/sukuk offerings.
 - Portfolio and activity views backed by mock in-memory data.
 - Simulated subscription flow that never moves money or creates a real investment.
